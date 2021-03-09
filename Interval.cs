@@ -2,20 +2,26 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-public class Interval<T> where T : struct,IComparable
+public class Interval
 {
-    public Nullable<T> Start { get; set; }
-    public Nullable<T> End { get; set; }
+    public float Start { get; set; }
+    public float End { get; set; }
 
-    public Interval(T start, T end)
+    public Interval(float start, float end)
     {
         Start = start;
         End = end;
     }
 
-    public bool InRange(T value)
+    public bool InRange(float value)
     {
-        return ((!Start.HasValue || value.CompareTo(Start.Value) >= 0) &&
-                (!End.HasValue || End.Value.CompareTo(value) >= 0));
+        if(value>=Start && value<=End)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
