@@ -1,38 +1,120 @@
 using System;
-using System.Diagnostics;
+using System.Collections.Generic;
 
 class Checker
-{
-    static bool batteryIsOk(float temperature, float soc, float chargeRate) {
-        if(temperature < 0 || temperature > 45) {
-            Console.WriteLine("Temperature is out of range!");
-            return false;
-        } else if(soc < 20 || soc > 80) {
-            Console.WriteLine("State of Charge is out of range!");
-            return false;
-        } else if(chargeRate > 0.8) {
-            Console.WriteLine("Charge Rate is out of range!");
-            return false;
-        }
-        return true;
+{    
+    static void Main()
+    {
+        float temperatureInput,stateOfChargeInput,chargeRateInput;
+        string languageInput = string.Empty;
+        languageInput = GetLanguageInput();
+        temperatureInput = GetTemperatureInput(languageInput);
+        stateOfChargeInput = GetStateOfChargeInput(languageInput);
+        chargeRateInput = GetChargeRateInput(languageInput);
+        BatteryExamine batteryExamine = new BatteryExamine();
+        batteryExamine.BatteryIsOk(new BatteryFactors(temperatureInput, stateOfChargeInput, chargeRateInput,languageInput));
     }
 
-    static void ExpectTrue(bool expression) {
-        if(!expression) {
-            Console.WriteLine("Expected true, but got false");
-            Environment.Exit(1);
+    static string GetLanguageInput()
+    {
+        DisplayMessage("Please select language 1.English 2.German");
+        int languageChoice = Convert.ToInt32(Console.ReadLine());
+        if (languageChoice == 1)
+        {
+            return "English";
+        }
+        else if (languageChoice==2)
+        {
+            return "German";
+        }
+        else
+        {
+            DisplayMessage("Please Enter valid value");
+            Environment.Exit(0);
+            return "Wrong Input";
         }
     }
-    static void ExpectFalse(bool expression) {
-        if(expression) {
-            Console.WriteLine("Expected false, but got true");
-            Environment.Exit(1);
+    static float GetTemperatureInput(string language)
+    {
+        int temperatureUnit;
+        if (language == "English")
+        {
+            DisplayMessage("Please provide temperature unit 1.Celsius 2.Fahrenheit");
+            temperatureUnit = Convert.ToInt32(Console.ReadLine());
+            DisplayMessage("Please provide temprature value:");
+            if (temperatureUnit == 1)
+            {
+                return float.Parse(Console.ReadLine());
+            }
+            else if (temperatureUnit == 2)
+            {
+                return ConvertTemperatureCelsiusToFahrenheit(float.Parse(Console.ReadLine()));
+            }
+            else
+            {
+                DisplayMessage("Please Enter valid value");
+                Environment.Exit(0);
+                return 0;
+            }
         }
+        else
+        {
+            DisplayMessage("Bitte Temperatureinheit 1.Celsius 2.Fahrenheit angeben");
+            temperatureUnit = Convert.ToInt32(Console.ReadLine());
+            DisplayMessage("Bitte geben Sie den Temperaturwert an");
+            if (temperatureUnit == 1)
+            {
+                return float.Parse(Console.ReadLine());
+            }
+            else if (temperatureUnit == 2)
+            {
+                return ConvertTemperatureCelsiusToFahrenheit(float.Parse(Console.ReadLine()));
+            }
+            else
+            {
+                DisplayMessage("Please Enter valid value");
+                Environment.Exit(0);
+                return 0;
+            }
+        }
+         
+        
     }
-    static int Main() {
-        ExpectTrue(batteryIsOk(25, 70, 0.7f));
-        ExpectFalse(batteryIsOk(50, 85, 0.0f));
-        Console.WriteLine("All ok");
-        return 0;
+    static float GetStateOfChargeInput(string language)
+    {
+        if (language == "English")
+        {           
+            DisplayMessage("Please provide state of charge value:");
+            return float.Parse(Console.ReadLine());
+        }
+        else
+        {
+            DisplayMessage("Bitte geben Sie den Ladezustand an:");
+            return float.Parse(Console.ReadLine());
+        }
+
+    }
+    static float GetChargeRateInput(string language)
+    {
+        if (language == "English")
+        {
+            DisplayMessage("Please provide charge rate value:");
+            return float.Parse(Console.ReadLine());
+        }
+        else
+        {
+            DisplayMessage("Bitte geben Sie den Gebührenwert an:");
+            return float.Parse(Console.ReadLine());
+        }
+
+    }
+    static void DisplayMessage(string inputMessage)
+    {
+        Console.WriteLine(inputMessage);
+    }
+    static float ConvertTemperatureCelsiusToFahrenheit(float fahrenheitTemp)
+    {
+        return (fahrenheitTemp - 32) * 5 / 9;
     }
 }
+
