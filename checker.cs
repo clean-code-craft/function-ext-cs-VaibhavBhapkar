@@ -36,7 +36,7 @@ class Checker
     }
     static float GetTemperatureInput(string language)
     {
-        int temperatureUnit;
+            int temperatureUnit;
         if (language == "English")
         {
             DisplayMessage("Please provide temperature unit 1.Celsius 2.Fahrenheit");
@@ -46,11 +46,10 @@ class Checker
             {
                 return float.Parse(Console.ReadLine());
             }
-            else if (temperatureUnit == 2)
+            else
             {
                 return ConvertTemperatureCelsiusToFahrenheit(float.Parse(Console.ReadLine()));
-            }
-           
+            }            
         }
         else
         {
@@ -61,7 +60,7 @@ class Checker
             {
                 return float.Parse(Console.ReadLine());
             }
-            else if (temperatureUnit == 2)
+            else
             {
                 return ConvertTemperatureCelsiusToFahrenheit(float.Parse(Console.ReadLine()));
             }
