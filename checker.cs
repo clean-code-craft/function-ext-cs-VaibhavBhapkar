@@ -2,17 +2,17 @@ using System;
 using System.Collections.Generic;
 
 class Checker
-{    
+{
     static void Main()
     {
-        float temperatureInput,stateOfChargeInput,chargeRateInput;
+        float temperatureInput, stateOfChargeInput, chargeRateInput;
         string languageInput = string.Empty;
         languageInput = GetLanguageInput();
         temperatureInput = GetTemperatureInput(languageInput);
         stateOfChargeInput = GetStateOfChargeInput(languageInput);
         chargeRateInput = GetChargeRateInput(languageInput);
         BatteryExamine batteryExamine = new BatteryExamine();
-        batteryExamine.BatteryIsOk(new BatteryFactors(temperatureInput, stateOfChargeInput, chargeRateInput,languageInput));
+        batteryExamine.BatteryIsOk(new BatteryFactors(temperatureInput, stateOfChargeInput, chargeRateInput, languageInput));
     }
 
     static string GetLanguageInput()
@@ -23,7 +23,7 @@ class Checker
         {
             return "English";
         }
-        else if (languageChoice==2)
+        else if (languageChoice == 2)
         {
             return "German";
         }
@@ -36,13 +36,19 @@ class Checker
     }
     static float GetTemperatureInput(string language)
     {
-          string message = string.Empty;
+        string message = string.Empty;
         int temperatureUnit;
         message = (language == "English") ? "Please provide temperature unit 1.Celsius 2.Fahrenheit" : "Bitte Temperatureinheit 1.Celsius 2.Fahrenheit angeben";
         DisplayMessage(message);
         temperatureUnit = Convert.ToInt32(Console.ReadLine());
+        return GetTemperatureValue(temperatureUnit, language);
+    }
+    static float GetTemperatureValue(int tempUnit,string language)
+    {
+        string message = string.Empty;
         message = (language == "English") ? "Please provide temperature value" : "Bitte geben Sie den Temperaturwert an";
-        if (temperatureUnit == 1)
+        DisplayMessage(message);
+        if (tempUnit == 1)
         {
             return float.Parse(Console.ReadLine());
         }
@@ -54,7 +60,7 @@ class Checker
     static float GetStateOfChargeInput(string language)
     {
         if (language == "English")
-        {           
+        {
             DisplayMessage("Please provide state of charge value:");
             return float.Parse(Console.ReadLine());
         }
