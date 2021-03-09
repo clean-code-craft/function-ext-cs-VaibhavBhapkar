@@ -8,7 +8,7 @@ class Checker
         float temperatureInput, stateOfChargeInput, chargeRateInput;
         string languageInput = string.Empty;
         languageInput = GetLanguageInput();
-        temperatureInput = GetTemperatureInput(languageInput);
+        temperatureInput = GetTemperatureUnit(languageInput);
         stateOfChargeInput = GetStateOfChargeInput(languageInput);
         chargeRateInput = GetChargeRateInput(languageInput);
         BatteryExamine batteryExamine = new BatteryExamine();
@@ -34,7 +34,7 @@ class Checker
             return "Wrong Input";
         }
     }
-    static float GetTemperatureInput(string language)
+    static float GetTemperatureUnit(string language)
     {
         string message = string.Empty;
         int temperatureUnit;
@@ -43,7 +43,7 @@ class Checker
         temperatureUnit = Convert.ToInt32(Console.ReadLine());
         return GetTemperatureValue(temperatureUnit, language);
     }
-    static float GetTemperatureValue(int tempUnit,string language)
+    static float GetTemperatureValue(int tempUnit, string language)
     {
         string message = string.Empty;
         message = (language == "English") ? "Please provide temperature value" : "Bitte geben Sie den Temperaturwert an";
@@ -59,30 +59,17 @@ class Checker
     }
     static float GetStateOfChargeInput(string language)
     {
-        if (language == "English")
-        {
-            DisplayMessage("Please provide state of charge value:");
-            return float.Parse(Console.ReadLine());
-        }
-        else
-        {
-            DisplayMessage("Bitte geben Sie den Ladezustand an:");
-            return float.Parse(Console.ReadLine());
-        }
-
+        string message = string.Empty;
+        message = (language == "English") ? "Please provide state of charge value:" : "Bitte geben Sie den Ladezustand an:";
+        DisplayMessage(message);
+        return float.Parse(Console.ReadLine());
     }
     static float GetChargeRateInput(string language)
     {
-        if (language == "English")
-        {
-            DisplayMessage("Please provide charge rate value:");
-            return float.Parse(Console.ReadLine());
-        }
-        else
-        {
-            DisplayMessage("Bitte geben Sie den Gebührenwert an:");
-            return float.Parse(Console.ReadLine());
-        }
+        string message = string.Empty;
+        message = (language == "English") ? "Please provide charge rate value:" : "Bitte geben Sie den Gebührenwert an:";
+        DisplayMessage(message);
+        return float.Parse(Console.ReadLine());
 
     }
     static void DisplayMessage(string inputMessage)
