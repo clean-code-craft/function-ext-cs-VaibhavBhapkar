@@ -50,12 +50,7 @@ class Checker
             {
                 return ConvertTemperatureCelsiusToFahrenheit(float.Parse(Console.ReadLine()));
             }
-            else
-            {
-                DisplayMessage("Please Enter valid value");
-                Environment.Exit(0);
-                return 0;
-            }
+           
         }
         else
         {
@@ -70,12 +65,7 @@ class Checker
             {
                 return ConvertTemperatureCelsiusToFahrenheit(float.Parse(Console.ReadLine()));
             }
-            else
-            {
-                DisplayMessage("Please Enter valid value");
-                Environment.Exit(0);
-                return 0;
-            }
+           
         }
          
         
