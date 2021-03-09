@@ -57,3 +57,10 @@ Shorten the Semantic distance
 - Functional to express relation between input and output
 - Object oriented to encapsulate state with actions
 - Apect oriented to capture repeating aspects
+
+## My Assignment
+
+Extended Features Listed Below 
+1) Early Warning - Dictionary DS is used to implement it.
+2) Support a language in addition to English - German language option added by taking input.
+3) Accept input in different units - Accepting temperature in another unit and taking input accordingly.
