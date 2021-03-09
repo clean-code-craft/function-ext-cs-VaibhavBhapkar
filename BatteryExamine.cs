@@ -14,30 +14,52 @@ public class BatteryExamine
     }
     private void CompareTemperatureWithRange(float batteryTemperature,string operatingLanguage)
     {
-        foreach (var kvp in BatteryLimits.temperatureBoundary)
+        foreach (var temperatureValue in BatteryLimits.temperatureBoundary)
         {
-            if (kvp.Key.InRange(batteryTemperature))
+            if (temperatureValue.Key.InRange(batteryTemperature))
             {
-                                
+                if (operatingLanguage == "English")
+                {
+                    DisplayMessage(temperatureValue.Value.Item1);
+                }
+                else
+                {
+                    DisplayMessage(temperatureValue.Value.Item2);
+                }
             }
         }
     }
     public void CompareStateOfChargeWithRange(float stateOfCharge,string operatingLanguage)
     {
-        foreach (var kvp in BatteryLimits.stateOfChargeBoundary)
+        foreach (var socValue in BatteryLimits.stateOfChargeBoundary)
         {
-            if (kvp.Key.InRange(stateOfCharge))
+            if (socValue.Key.InRange(stateOfCharge))
             {
-                
+                if(operatingLanguage=="English")
+                {
+                    DisplayMessage(socValue.Value.Item1);
+                }
+                else
+                {
+                    DisplayMessage(socValue.Value.Item2);
+                }
             }
         }
     }
     public void CompareChargeRateWithRange(float chargeRate,string operatingLanguage)
     {
-        foreach (var kvp in BatteryLimits.chargeRateBoundary)
+        foreach (var chargeRateValue in BatteryLimits.chargeRateBoundary)
         {
-            if (kvp.Key.InRange(chargeRate))
+            if (chargeRateValue.Key.InRange(chargeRate))
             {
+                if (operatingLanguage == "English")
+                {
+                    DisplayMessage(chargeRateValue.Value.Item1);
+                }
+                else
+                {
+                    DisplayMessage(chargeRateValue.Value.Item2);
+                }
             }
         }
     }
