@@ -18,9 +18,9 @@ public static class BatteryLimits
    private static IReadOnlyDictionary<Interval, Tuple<string, string>> _temperatureBoundary
    = new Dictionary<Interval, Tuple<string, string>>
       {
-           { new Interval(-45, -2.26f), new Tuple<string,string>("The temperature is low compared to the minimum limits","Die Temperatur ist im Vergleich zu den Mindestgrenzwerten niedrig") },
-           { new Interval(-2.25f, -1), new Tuple<string,string>("Warning! Temperature is heading towards minimum limit value","Warnung! Die Temperatur nähert sich dem Mindestgrenzwert") },
-           { new Interval(0, 42.75f), new Tuple<string,string>("Temperature is Normal","Die Temperatur ist normal")},
+           { new Interval(-45, -0.01f), new Tuple<string,string>("The temperature is low compared to the minimum limits","Die Temperatur ist im Vergleich zu den Mindestgrenzwerten niedrig") },
+           { new Interval(0, 2.25f), new Tuple<string,string>("Warning! Temperature is heading towards minimum limit value","Warnung! Die Temperatur nähert sich dem Mindestgrenzwert") },
+           { new Interval(2.26f, 42.75f), new Tuple<string,string>("Temperature is Normal","Die Temperatur ist normal")},
            { new Interval(42.76f, 45), new Tuple<string,string>("Warning! Temperature is heading towards maximum limit value","Warnung! Die Temperatur nähert sich dem maximalen Grenzwert") },
            { new Interval(46, 100), new Tuple<string,string>("The temperature is high compared to the maximum limits","Die Temperatur ist im Vergleich zu den Höchstgrenzen hoch") }
        };
