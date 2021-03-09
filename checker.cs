@@ -36,38 +36,20 @@ class Checker
     }
     static float GetTemperatureInput(string language)
     {
-            int temperatureUnit;
-        if (language == "English")
+          string message = string.Empty;
+        int temperatureUnit;
+        message = (language == "English") ? "Please provide temperature unit 1.Celsius 2.Fahrenheit" : "Bitte Temperatureinheit 1.Celsius 2.Fahrenheit angeben";
+        DisplayMessage(message);
+        temperatureUnit = Convert.ToInt32(Console.ReadLine());
+        message = (language == "English") ? "Please provide temperature value" : "Bitte geben Sie den Temperaturwert an";
+        if (temperatureUnit == 1)
         {
-            DisplayMessage("Please provide temperature unit 1.Celsius 2.Fahrenheit");
-            temperatureUnit = Convert.ToInt32(Console.ReadLine());
-            DisplayMessage("Please provide temprature value:");
-            if (temperatureUnit == 1)
-            {
-                return float.Parse(Console.ReadLine());
-            }
-            else
-            {
-                return ConvertTemperatureCelsiusToFahrenheit(float.Parse(Console.ReadLine()));
-            }            
+            return float.Parse(Console.ReadLine());
         }
         else
         {
-            DisplayMessage("Bitte Temperatureinheit 1.Celsius 2.Fahrenheit angeben");
-            temperatureUnit = Convert.ToInt32(Console.ReadLine());
-            DisplayMessage("Bitte geben Sie den Temperaturwert an");
-            if (temperatureUnit == 1)
-            {
-                return float.Parse(Console.ReadLine());
-            }
-            else
-            {
-                return ConvertTemperatureCelsiusToFahrenheit(float.Parse(Console.ReadLine()));
-            }
-           
+            return ConvertTemperatureCelsiusToFahrenheit(float.Parse(Console.ReadLine()));
         }
-         
-        
     }
     static float GetStateOfChargeInput(string language)
     {
