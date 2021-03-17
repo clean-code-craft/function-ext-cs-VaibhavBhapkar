@@ -4,7 +4,13 @@
     <Compile Include="BatteryExamine.cs"/>
     <Compile Include="BatteryFactors.cs"/>
     <Compile Include="Interval.cs"/>
+    <Compile Include="BatteryFeatureConversion.cs"/>
     <Compile Include="BatteryLimits.cs"/>
+    <Compile Include="BatteryReport.cs"/>
+    <Compile Include="ConsoleReportLogger.cs"/>
+    <Compile Include="Display.cs"/>
+    <Compile Include="DummyReportLogger.cs"/>
+    <Compile Include="IReports.cs"/>
   </ItemGroup>
   <Target Name="Build">
     <Csc Sources="@(Compile)"/>  
