@@ -58,9 +58,14 @@ Shorten the Semantic distance
 - Object oriented to encapsulate state with actions
 - Apect oriented to capture repeating aspects
 
-## My Assignment
+## My Assignment - Extended Features
 
 Extended Features Listed Below 
 1) Early Warning - Dictionary DS is used to implement it.
 2) Support a language in addition to English - German language option added by taking input.
 3) Accept input in different units - Accepting temperature in another unit and taking input accordingly.
+
+## My Assignment - Accumulation and Reporting Feature Addition
+1) By considering exisitng architecture built for extension assignment adding feature to get breached parameter name with message and adding all into dictionary DS.
+2) Same generated dictionary is used for reporting feature of consolelogger and dummycontroller logger.
+
