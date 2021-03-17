@@ -8,11 +8,11 @@ public class BatteryExamine
 
     string message = string.Empty;
     Dictionary<string, string> batteryAlerts = new Dictionary<string, string>();
-    
+
     public Dictionary<string, string> BatteryIsOk(BatteryFactors batteryFactors)
     {
         batteryAlerts.Clear();
-        if(batteryFactors.temperatureMesureUnit== "Fahrenheit")
+        if (batteryFactors.temperatureMesureUnit == "Fahrenheit")
         {
             batteryFactors.batteryTemprature = BatteryFeatureConversion.ConvertTemperatureFahrenheitToCelsius(batteryFactors.batteryTemprature);
         }
@@ -27,7 +27,17 @@ public class BatteryExamine
         {
             if (temperatureValue.Key.InRange(batteryTemperature))
             {
-                AccumulateBreachedFeatures(temperatureValue.Value, operatingLanguage, "Temperature");
+                if (operatingLanguage == "English")
+                {
+                    Display.PrintMessage(temperatureValue.Value.Item1);
+                    AccumulateBreachedFeatures("Temperature", temperatureValue.Value.Item1, temperatureValue.Value.Item3);
+                }
+                else
+                {
+                    Display.PrintMessage(temperatureValue.Value.Item2);
+                    AccumulateBreachedFeatures("Temperature", temperatureValue.Value.Item2, temperatureValue.Value.Item3);
+                }
+
             }
         }
     }
@@ -37,7 +47,16 @@ public class BatteryExamine
         {
             if (socValue.Key.InRange(stateOfCharge))
             {
-                AccumulateBreachedFeatures(socValue.Value, operatingLanguage, "State Of Charge");
+                if (operatingLanguage == "English")
+                {
+                    Display.PrintMessage(socValue.Value.Item1);
+                    AccumulateBreachedFeatures("State Of Charge", socValue.Value.Item1, socValue.Value.Item3);
+                }
+                else
+                {
+                    Display.PrintMessage(socValue.Value.Item2);
+                    AccumulateBreachedFeatures("State Of Charge", socValue.Value.Item2, socValue.Value.Item3);
+                }
             }
         }
     }
@@ -47,27 +66,24 @@ public class BatteryExamine
         {
             if (chargeRateValue.Key.InRange(chargeRate))
             {
-                AccumulateBreachedFeatures(chargeRateValue.Value, operatingLanguage, "Charge Rate");
+                if (operatingLanguage == "English")
+                {
+                    Display.PrintMessage(chargeRateValue.Value.Item1);
+                    AccumulateBreachedFeatures("Charge Rate", chargeRateValue.Value.Item1, chargeRateValue.Value.Item3);
+                }
+                else
+                {
+                    Display.PrintMessage(chargeRateValue.Value.Item2);
+                    AccumulateBreachedFeatures("Charge Rate", chargeRateValue.Value.Item2, chargeRateValue.Value.Item3);
+                }
             }
         }
     }
-    public void AccumulateBreachedFeatures(Tuple<string,string,string> parameterValue,string operatingLanguage,string batteryFeature)
+    public void AccumulateBreachedFeatures(string parameterName, string parameterValue, string parameterStatus)
     {
-        if (operatingLanguage == "English")
+        if (parameterStatus == "Breach")
         {
-            Display.PrintMessage(parameterValue.Item1);
-            if (parameterValue.Item3 == "Breach")
-            {
-                batteryAlerts.Add(batteryFeature, parameterValue.Item1);    
-            }
-        }
-        else
-        {
-            Display.PrintMessage(parameterValue.Item2);
-            if (parameterValue.Item3 == "Breach")
-            {
-                batteryAlerts.Add(batteryFeature, parameterValue.Item2);
-            }
+            batteryAlerts.Add(parameterName, parameterValue);
         }
     }
 
