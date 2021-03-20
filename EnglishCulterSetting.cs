@@ -9,7 +9,7 @@ public class EnglishCulterSetting : ICulterSet
 {
     public ResourceManager SetLanguage()
     {
-        ResourceManager resourceManager = new ResourceManager("checker.en-US",
+        ResourceManager resourceManager = new ResourceManager("en-US",
             Assembly.GetExecutingAssembly());
         return resourceManager;
     }
