@@ -9,7 +9,7 @@ public class GermanCulterSetting : ICulterSet
 {
     public ResourceManager SetLanguage()
     {
-        ResourceManager resourceManager = new ResourceManager("checker.de-DE",
+        ResourceManager resourceManager = new ResourceManager("de-DE",
             Assembly.GetExecutingAssembly());
         return resourceManager;
     }
