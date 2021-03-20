@@ -4,23 +4,8 @@
     <Compile Include="BatteryExamine.cs"/>
     <Compile Include="BatteryFactors.cs"/>
     <Compile Include="Interval.cs"/>
-    <Compile Include="BatteryFeatureConversion.cs"/>
     <Compile Include="BatteryLimits.cs"/>
-    <Compile Include="BatteryReport.cs"/>
-    <Compile Include="ConsoleReportLogger.cs"/>
-    <Compile Include="Display.cs"/>
-    <Compile Include="DummyReportLogger.cs"/>
-    <Compile Include="IReports.cs"/>
-    <Compile Include="ISubject.cs"/>
-    <Compile Include="IObserver.cs"/>
-    <Compile Include="ICulterSet.cs"/>
-    <Compile Include="GermanCulterSetting.cs"/>
-    <Compile Include="EnglishCulterSetting.cs"/>
-    <Compile Include="CultureInformation.cs"/>
-    <Compile Include="CulterHelper.cs"/>
-    <Compile Include="AccumulateBreachParameter.cs"/>
-    <Compile Include="BatteryParameterBreachSubject.cs"/>
-  </ItemGroup>
+     </ItemGroup>
   
   <Target Name="Build">
     <Csc Sources="@(Compile)"/>  
