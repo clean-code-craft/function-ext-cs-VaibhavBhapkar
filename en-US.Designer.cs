@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace checker {
+
     using System;
     
     
@@ -249,4 +249,4 @@ namespace checker {
             }
         }
     }
-}
+
