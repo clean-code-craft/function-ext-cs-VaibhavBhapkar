@@ -19,7 +19,9 @@
     <Compile Include="CultureInformation.cs"/>
     <Compile Include="CulterHelper.cs"/>
     <Compile Include="AccumulateBreachParameter.cs"/>
-    <Compile Include="BatteryParameterBreachSubject.cs"/>    
+    <Compile Include="BatteryParameterBreachSubject.cs"/>
+    <Compile Include="de-DE.Designer.cs" />
+    <Compile Include="en-US.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="de-DE.resx" />
