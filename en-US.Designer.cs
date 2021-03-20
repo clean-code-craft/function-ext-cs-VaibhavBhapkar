@@ -39,7 +39,7 @@ namespace checker {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("checker.en-US", typeof(en_US).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("en-US", typeof(en_US).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
