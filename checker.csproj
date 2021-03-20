@@ -3,6 +3,8 @@
     <Compile Include="checker.cs"/>
     <Compile Include="BatteryExamine.cs"/>
     <Compile Include="BatteryFactors.cs"/>
+    <Compile Include="de-DE.Designer.cs" />
+    <Compile Include="en-US.Designer.cs" />
     <Compile Include="Interval.cs"/>
     <Compile Include="BatteryFeatureConversion.cs"/>
     <Compile Include="BatteryLimits.cs"/>
@@ -20,8 +22,6 @@
     <Compile Include="CulterHelper.cs"/>
     <Compile Include="AccumulateBreachParameter.cs"/>
     <Compile Include="BatteryParameterBreachSubject.cs"/>
-    <Compile Include="de-DE.Designer.cs" />
-    <Compile Include="en-US.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="de-DE.resx" />
