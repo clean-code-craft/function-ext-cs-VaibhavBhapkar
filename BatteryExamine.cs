@@ -14,10 +14,7 @@ public class BatteryExamine
         {
             return true;
         }
-        else
-        {
-            return false;
-        }
+        return false;
     }
     private BatteryFactors.BatteryStatus CompareTemperatureWithRange(float batteryTemperature)
     {
@@ -56,3 +53,4 @@ public class BatteryExamine
         return BatteryFactors.BatteryStatus.Breach;
     }  
 }
+
