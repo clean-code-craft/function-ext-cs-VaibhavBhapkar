@@ -9,7 +9,7 @@ class Checker
         
          
       // Enumerate the resource files.
-      string[] resNames = Assembly.GetExecutingAssembly().GetManifestResourceNames();
+      string[] resNames = System.Assembly.GetExecutingAssembly().GetManifestResourceNames();
       if (resNames.Length == 0)
          Console.WriteLine("   No resources found.");
 
