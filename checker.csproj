@@ -3,11 +3,11 @@
     <ProjectGuid>{CA0C442F-E6A0-494D-B71A-EEF6E5C92904}</ProjectGuid>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="checker.cs" />
     <Compile Include="AccumulateBreachParameter.cs" />
     <Compile Include="BatteryFeatureConversion.cs" />
     <Compile Include="BatteryParameterBreachSubject.cs" />
-    <Compile Include="BatteryReport.cs" />
-    <Compile Include="checker.cs" />
+    <Compile Include="BatteryReport.cs" />    
     <Compile Include="BatteryExamine.cs" />
     <Compile Include="BatteryFactors.cs" />
     <Compile Include="ConsoleReportLogger.cs" />
