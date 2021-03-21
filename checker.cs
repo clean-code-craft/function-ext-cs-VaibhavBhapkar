@@ -9,8 +9,8 @@ class Checker
     {
         
          
-    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("checker.en-US", typeof(en_US).Assembly);
-        temp.GetString("TemperatureUnit");
+    
+        string value =en_US.TemperatureUnit;
         
         /*
         float temperatureInput, stateOfChargeInput, chargeRateInput;
