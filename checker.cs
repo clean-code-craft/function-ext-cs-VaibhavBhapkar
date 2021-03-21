@@ -6,6 +6,20 @@ class Checker
 {
     static void Main()
     {
+        
+         
+      // Enumerate the resource files.
+      string[] resNames = Assembly.GetExecutingAssembly().GetManifestResourceNames();
+      if (resNames.Length == 0)
+         Console.WriteLine("   No resources found.");
+
+      foreach (var resName in resNames)
+      {
+         Console.WriteLine("   Resource: {0}", resName.Replace(".resources", ""));
+      }
+
+        
+        /*
         float temperatureInput, stateOfChargeInput, chargeRateInput;
         ResourceManager resourceInfo = GetLanguageInput();
         CultureInformation.SetCultureInformation(resourceInfo);
@@ -25,6 +39,7 @@ class Checker
         IReports iReportsDummyLogger = new DummyReportLogger();
         BatteryReport batteryReportWithDummyLogger = new BatteryReport(iReportsDummyLogger);
         batteryReportWithDummyLogger.ReportLogger(batteryAlertMessages);
+        */
 
     }
     static ResourceManager GetLanguageInput()
