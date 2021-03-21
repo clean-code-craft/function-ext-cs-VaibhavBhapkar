@@ -4,35 +4,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="checker.cs" />
-    <Compile Include="AccumulateBreachParameter.cs" />
-    <Compile Include="BatteryFeatureConversion.cs" />
-    <Compile Include="BatteryParameterBreachSubject.cs" />
-    <Compile Include="BatteryReport.cs" />    
-    <Compile Include="BatteryExamine.cs" />
-    <Compile Include="BatteryFactors.cs" />
-    <Compile Include="ConsoleReportLogger.cs" />
-    <Compile Include="CulterHelper.cs" />
-    <Compile Include="CultureInformation.cs" />
     <Compile Include="de-DE.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>de-DE.resx</DependentUpon>
     </Compile>
-    <Compile Include="Display.cs" />
-    <Compile Include="DummyReportLogger.cs" />
     <Compile Include="en-US.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>en-US.resx</DependentUpon>
     </Compile>
-    <Compile Include="EnglishCulterSetting.cs" />
-    <Compile Include="GermanCulterSetting.cs" />
-    <Compile Include="ICulterSet.cs" />
-    <Compile Include="Interval.cs" />
-    <Compile Include="BatteryLimits.cs" />
-    <Compile Include="IObserver.cs" />
-    <Compile Include="IReports.cs" />
-    <Compile Include="ISubject.cs" />
+   
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="de-DE.resx">
