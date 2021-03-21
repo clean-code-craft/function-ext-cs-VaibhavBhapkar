@@ -11,7 +11,7 @@ class Checker
          
             System.Console.WriteLine("hello");
          Assembly assem =System.Reflection.Assembly.GetExecutingAssembly();
-      Console.WriteLine("File: {0}", filename);
+      
          
       // Enumerate the resource files.
       string[] resNames = assem.GetManifestResourceNames();
