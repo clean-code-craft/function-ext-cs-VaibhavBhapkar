@@ -9,16 +9,8 @@ class Checker
     {
         
          
-      // Enumerate the resource files.
-      string[] resNames = Assembly.GetExecutingAssembly().GetManifestResourceNames();
-      if (resNames.Length == 0)
-         Console.WriteLine("   No resources found.");
-
-      foreach (var resName in resNames)
-      {
-         Console.WriteLine("   Resource: {0}", resName.Replace(".resources", ""));
-      }
-
+      ResourceManager _resourceManager = new ResourceManager(string.Format("checker.{0}.resx", "en-US"),Assembly.GetExecutingAssembly());
+        _resourceManager.GetString(TemperatureUnit, CultureInfo.InvariantCulture);
         
         /*
         float temperatureInput, stateOfChargeInput, chargeRateInput;
