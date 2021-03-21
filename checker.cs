@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Resources;
 
 class Checker
@@ -9,7 +10,7 @@ class Checker
         
          
       // Enumerate the resource files.
-      string[] resNames = System.Assembly.GetExecutingAssembly().GetManifestResourceNames();
+      string[] resNames = Assembly.GetExecutingAssembly().GetManifestResourceNames();
       if (resNames.Length == 0)
          Console.WriteLine("   No resources found.");
 
