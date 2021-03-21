@@ -31,18 +31,18 @@ class Checker
     {
         Display.PrintMessage("Please select language 1.English 2.German");
         int languageChoice = Convert.ToInt32(Console.ReadLine());
-        if (languageChoice == 1)
-        {
+       // if (languageChoice == 1)
+        //{
             ICulterSet culterSet = new EnglishCulterSetting();
             CulterHelper culterHelper = new CulterHelper(culterSet);
             return culterHelper.SetCulter();
-        }
-        else
-        {
-            ICulterSet culterSet = new GermanCulterSetting();
-            CulterHelper culterHelper = new CulterHelper(culterSet);
-            return culterHelper.SetCulter();
-        }
+        //}
+        //else
+       // {
+          //  ICulterSet culterSet = new GermanCulterSetting();
+            //CulterHelper culterHelper = new CulterHelper(culterSet);
+            //return culterHelper.SetCulter();
+        //}
     }
     static float GetTemperatureUnit()
     {
