@@ -6,7 +6,7 @@ public static class Display
 {
     public static void PrintMessage(string displayMessage)
     {
-        Console.WriteLine(displayMessage);
+        Console.WriteLine("Hello" + displayMessage);
     }
 }
 
