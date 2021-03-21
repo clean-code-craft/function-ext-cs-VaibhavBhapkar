@@ -1,15 +1,5 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="Current">
-  <PropertyGroup>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>2.0</OldToolsVersion>
-    <ProjectGuid>{CA0C442F-E6A0-494D-B71A-EEF6E5C92904}</ProjectGuid>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <OutputPath>.\</OutputPath>
-  </PropertyGroup>
+  
   <ItemGroup>
     <Compile Include="AccumulateBreachParameter.cs" />
     <Compile Include="BatteryFeatureConversion.cs" />
