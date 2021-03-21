@@ -10,7 +10,7 @@ class Checker
         
          
             System.Console.WriteLine("hello");
-         Assembly assem =System.Reflection.Assembly.GetExecutingAssembly();
+         Assembly assem =typeof(en_US).Assembly;
       
          
       // Enumerate the resource files.
