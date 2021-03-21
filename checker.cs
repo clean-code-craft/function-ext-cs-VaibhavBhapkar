@@ -10,7 +10,7 @@ class Checker
         
          
       ResourceManager _resourceManager = new ResourceManager(string.Format("checker.{0}.resx", "en-US"),Assembly.GetExecutingAssembly());
-        _resourceManager.GetString("TemperatureUnit", CultureInfo.InvariantCulture);
+        _resourceManager.GetString("TemperatureUnit");
         
         /*
         float temperatureInput, stateOfChargeInput, chargeRateInput;
