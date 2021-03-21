@@ -1,5 +1,7 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="Current">
-  
+  <PropertyGroup>
+    <ProjectGuid>{CA0C442F-E6A0-494D-B71A-EEF6E5C92904}</ProjectGuid>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="AccumulateBreachParameter.cs" />
     <Compile Include="BatteryFeatureConversion.cs" />
