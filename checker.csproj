@@ -3,28 +3,13 @@
     <ProjectGuid>{CA0C442F-E6A0-494D-B71A-EEF6E5C92904}</ProjectGuid>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="checker.cs" />
-    <Compile Include="de-DE.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>de-DE.resx</DependentUpon>
-    </Compile>
-    <Compile Include="en-US.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>en-US.resx</DependentUpon>
-    </Compile>
-   
+     <Compile Include="checker.cs" />
+    <Compile Include="de-DE.Designer.cs" />
+    <Compile Include="en-US.Designer.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="de-DE.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>de-DE.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="en-US.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>en-US.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+ <ItemGroup>
+    <EmbeddedResource Include="de-DE.resx" />
+    <EmbeddedResource Include="en-US.resx" />
   </ItemGroup>
   <Target Name="Build">
     <Csc Sources="@(Compile)" />  
