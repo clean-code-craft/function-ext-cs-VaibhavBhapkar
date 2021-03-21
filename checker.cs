@@ -1,84 +1,87 @@
 using System;
 using System.Collections.Generic;
+using System.Resources;
 
 class Checker
 {
     static void Main()
     {
         float temperatureInput, stateOfChargeInput, chargeRateInput;
-        string languageInput = string.Empty;
-        languageInput = GetLanguageInput();
-        temperatureInput = GetTemperatureUnit(languageInput);
-        stateOfChargeInput = GetStateOfChargeInput(languageInput);
-        chargeRateInput = GetChargeRateInput(languageInput);
+        ResourceManager resourceInfo = GetLanguageInput();
+        CultureInformation.SetCultureInformation(resourceInfo);
+        temperatureInput = GetTemperatureUnit();
+        stateOfChargeInput = GetStateOfChargeInput();
+        chargeRateInput = GetChargeRateInput();
         BatteryExamine batteryExamine = new BatteryExamine();
-        batteryExamine.BatteryIsOk(new BatteryFactors(temperatureInput, stateOfChargeInput, chargeRateInput, languageInput));
-    }
+        bool result = batteryExamine.BatteryIsOk(new BatteryFactors(temperatureInput, stateOfChargeInput, chargeRateInput));
+        BatteryParameterBreachSubject batteryParameterBreachSubject = new BatteryParameterBreachSubject();
+        AccumulateBreachParameter accumulateBreachParameter = new AccumulateBreachParameter();
+        batteryParameterBreachSubject.Attach(accumulateBreachParameter);
+        batteryParameterBreachSubject.BatteryFeaturesBreachCheck(new BatteryFactors(temperatureInput, stateOfChargeInput, chargeRateInput));
+        Dictionary<string, string> batteryAlertMessages = accumulateBreachParameter.GetReport();
+        IReports iReportsCosoleLogger = new ConsoleReportLogger();
+        BatteryReport batteryReportWithConsoleLogger = new BatteryReport(iReportsCosoleLogger);
+        batteryReportWithConsoleLogger.ReportLogger(batteryAlertMessages);
+        IReports iReportsDummyLogger = new DummyReportLogger();
+        BatteryReport batteryReportWithDummyLogger = new BatteryReport(iReportsDummyLogger);
+        batteryReportWithDummyLogger.ReportLogger(batteryAlertMessages);
 
-    static string GetLanguageInput()
+    }
+    static ResourceManager GetLanguageInput()
     {
-        DisplayMessage("Please select language 1.English 2.German");
+        Display.PrintMessage("Please select language 1.English 2.German");
         int languageChoice = Convert.ToInt32(Console.ReadLine());
         if (languageChoice == 1)
         {
-            return "English";
-        }
-        else if (languageChoice == 2)
-        {
-            return "German";
+            ICulterSet culterSet = new EnglishCulterSetting();
+            CulterHelper culterHelper = new CulterHelper(culterSet);
+            return culterHelper.SetCulter();
         }
         else
         {
-            DisplayMessage("Please Enter valid value");
-            Environment.Exit(0);
-            return "Wrong Input";
+            ICulterSet culterSet = new GermanCulterSetting();
+            CulterHelper culterHelper = new CulterHelper(culterSet);
+            return culterHelper.SetCulter();
         }
     }
-    static float GetTemperatureUnit(string language)
+    static float GetTemperatureUnit()
     {
         string message = string.Empty;
         int temperatureUnit;
-        message = (language == "English") ? "Please provide temperature unit 1.Celsius 2.Fahrenheit" : "Bitte Temperatureinheit 1.Celsius 2.Fahrenheit angeben";
-        DisplayMessage(message);
+        message = CultureInformation.GetCultureInformation().GetString("TemperatureUnit");
+        Display.PrintMessage(message);
         temperatureUnit = Convert.ToInt32(Console.ReadLine());
-        return GetTemperatureValue(temperatureUnit, language);
+        return GetTemperatureValue(temperatureUnit);
     }
-    static float GetTemperatureValue(int tempUnit, string language)
+    static float GetTemperatureValue(int tempUnit)
     {
         string message = string.Empty;
-        message = (language == "English") ? "Please provide temperature value" : "Bitte geben Sie den Temperaturwert an";
-        DisplayMessage(message);
+        message = CultureInformation.GetCultureInformation().GetString("TemperatureValue");
+        Display.PrintMessage(message);
         if (tempUnit == 1)
         {
             return float.Parse(Console.ReadLine());
         }
         else
         {
-            return ConvertTemperatureCelsiusToFahrenheit(float.Parse(Console.ReadLine()));
+            return BatteryFeatureConversion.ConvertTemperatureFahrenheitToCelsius(float.Parse(Console.ReadLine()));
         }
     }
-    static float GetStateOfChargeInput(string language)
+    static float GetStateOfChargeInput()
     {
         string message = string.Empty;
-        message = (language == "English") ? "Please provide state of charge value:" : "Bitte geben Sie den Ladezustand an:";
-        DisplayMessage(message);
+        message = CultureInformation.GetCultureInformation().GetString("StateOfChargeValue");
+        Display.PrintMessage(message);
         return float.Parse(Console.ReadLine());
     }
-    static float GetChargeRateInput(string language)
+    static float GetChargeRateInput()
     {
         string message = string.Empty;
-        message = (language == "English") ? "Please provide charge rate value:" : "Bitte geben Sie den Gebührenwert an:";
-        DisplayMessage(message);
+        message = CultureInformation.GetCultureInformation().GetString("ChargeRateValue");
+        Display.PrintMessage(message);
         return float.Parse(Console.ReadLine());
 
     }
-    static void DisplayMessage(string inputMessage)
-    {
-        Console.WriteLine(inputMessage);
-    }
-    static float ConvertTemperatureCelsiusToFahrenheit(float fahrenheitTemp)
-    {
-        return (fahrenheitTemp - 32) * 5 / 9;
-    }
+
 }
 

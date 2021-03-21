@@ -2,71 +2,60 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-
 public class BatteryExamine
 {
-    string message = string.Empty;
-    public void BatteryIsOk(BatteryFactors batteryFactors)
+    public bool BatteryIsOk(BatteryFactors batteryFactors)
     {
-        CompareTemperatureWithRange(batteryFactors.batteryTemprature,batteryFactors.operatingLanguage);
-        CompareStateOfChargeWithRange(batteryFactors.batteryStateOfCharge,batteryFactors.operatingLanguage);
-        CompareChargeRateWithRange(batteryFactors.batteryChargeRate,batteryFactors.operatingLanguage);
+        bool temperatureStatus, socStatus, chargeRateStatus;
+        temperatureStatus = CompareTemperatureWithRange(batteryFactors.batteryTemprature);
+        socStatus = CompareStateOfChargeWithRange(batteryFactors.batteryStateOfCharge);
+        chargeRateStatus = CompareChargeRateWithRange(batteryFactors.batteryChargeRate);
+        return (temperatureStatus && socStatus && chargeRateStatus);
     }
-    private void CompareTemperatureWithRange(float batteryTemperature,string operatingLanguage)
+    private bool CompareTemperatureWithRange(float batteryTemperature)
     {
         foreach (var temperatureValue in BatteryLimits.temperatureBoundary)
         {
             if (temperatureValue.Key.InRange(batteryTemperature))
             {
-                if (operatingLanguage == "English")
+                Display.PrintMessage(temperatureValue.Value.Item1);
+                if (temperatureValue.Value.Item2 != BatteryFactors.BatteryStatus.Breach)
                 {
-                    DisplayMessage(temperatureValue.Value.Item1);
-                }
-                else
-                {
-                    DisplayMessage(temperatureValue.Value.Item2);
+                    return true;
                 }
             }
         }
+        return false;
     }
-    public void CompareStateOfChargeWithRange(float stateOfCharge,string operatingLanguage)
+    public bool CompareStateOfChargeWithRange(float stateOfCharge)
     {
         foreach (var socValue in BatteryLimits.stateOfChargeBoundary)
         {
             if (socValue.Key.InRange(stateOfCharge))
             {
-                if(operatingLanguage=="English")
+                Display.PrintMessage(socValue.Value.Item1);
+                if (socValue.Value.Item2 != BatteryFactors.BatteryStatus.Breach)
                 {
-                    DisplayMessage(socValue.Value.Item1);
-                }
-                else
-                {
-                    DisplayMessage(socValue.Value.Item2);
+                    return true;
                 }
             }
         }
+        return false;
     }
-    public void CompareChargeRateWithRange(float chargeRate,string operatingLanguage)
+    public bool CompareChargeRateWithRange(float chargeRate)
     {
         foreach (var chargeRateValue in BatteryLimits.chargeRateBoundary)
         {
             if (chargeRateValue.Key.InRange(chargeRate))
             {
-                if (operatingLanguage == "English")
+                Display.PrintMessage(chargeRateValue.Value.Item1);
+                if (chargeRateValue.Value.Item2 != BatteryFactors.BatteryStatus.Breach)
                 {
-                    DisplayMessage(chargeRateValue.Value.Item1);
-                }
-                else
-                {
-                    DisplayMessage(chargeRateValue.Value.Item2);
+                    return true;
                 }
             }
         }
+        return false;
     }
-    static void DisplayMessage(string displayMessage)
-    {
-        Console.WriteLine(displayMessage);
-    }
-
 }
 
